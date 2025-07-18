@@ -180,6 +180,8 @@
             gap: 20px;
         }
 
+        /* --- START OF RESPONSIVE ENHANCEMENTS --- */
+
         /* Responsive breakpoints for tablet and mobile */
         @media (max-width: 1200px) {
             .main-content {
@@ -191,9 +193,31 @@
                     "talents talents"
                     "notes notes";
             }
+            .roles-list {
+                flex-wrap: wrap; /* Allow roles to wrap if needed on tablets */
+                justify-content: center;
+                gap: 8px;
+            }
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Reduce body padding on small screens */
+            }
+
+            .character-sheet {
+                padding: 15px; /* Reduce sheet padding */
+            }
+
+            header h1 {
+                font-size: 2.2em; /* Decrease header font size for mobile */
+            }
+
+            .character-details {
+                flex-direction: column; /* Stack name inputs vertically */
+                gap: 15px;
+            }
+            
             .main-content {
                 grid-template-columns: 1fr;
                 grid-template-areas:
@@ -204,6 +228,7 @@
                     "roles"
                     "talents"
                     "notes";
+                gap: 15px;
             }
 
             /* Ensure values section displays properly on mobile */
@@ -218,7 +243,38 @@
             .value-content {
                 margin-top: 8px;
             }
+
+            /* Adjust distinction inputs for smaller screens */
+            .distinction-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .distinction-input {
+                width: 100%;
+            }
+
+            /* Make roles wrap and centered on mobile */
+            .roles-list {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .role-item {
+                flex-basis: calc(50% - 10px); /* Two roles per line */
+                min-width: 120px;
+            }
+
+            /* Stack action buttons vertically on mobile */
+            .character-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
+        /* --- END OF RESPONSIVE ENHANCEMENTS --- */
+
 
         /* Grid area assignments for layout sections */
         .distinctions-section {
@@ -1594,14 +1650,6 @@
         .character-action-btn:active {
             transform: scale(0.98);
         }
-        .value-statement {
-            width: 98%;
-            display: block; /* margin: auto 水平居中需要块级元素 */
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-
     </style>
 </body>
 
