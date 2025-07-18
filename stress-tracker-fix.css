@@ -1,0 +1,116 @@
+/**
+ * Enhanced stress tracker styling
+ * Implements color changes based on the number of filled points
+ */
+
+/* Common styles for all stress tracker circles */
+.circle {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(31, 31, 31, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.circle:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 8px rgba(197, 168, 105, 0.5);
+    transform: scale(1.1);
+}
+
+/* Physical and Mental Stress Trackers - Standard filled style */
+[data-tracker-type="physical"] .circle.filled,
+[data-tracker-type="mental"] .circle.filled {
+    background: radial-gradient(circle at center, #c5a869 0%, #8c7853 100%);
+    border-color: #c5a869;
+    box-shadow: 0 0 10px rgba(197, 168, 105, 0.6);
+}
+
+/* Momentum tracker style - standard filled style */
+[data-tracker-type="momentum"] .circle.filled {
+    background: radial-gradient(circle at center, #ffd700 0%, #daa520 100%);
+    border-color: #ffd700;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+}
+
+@keyframes momentum-pulse {
+    0% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
+    50% { box-shadow: 0 0 25px rgba(255, 215, 0, 1); }
+    100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
+}
+
+/* Stress level indicators for tracker headers */
+.tracker.stress-none h3 {
+    color: var(--color-text);
+}
+
+.tracker.stress-low h3 {
+    color: var(--color-accent);
+}
+
+.tracker.stress-medium h3 {
+    color: #e6c07b;
+}
+
+.tracker.stress-high h3 {
+    color: #e67e22;
+}
+
+.tracker.stress-critical h3 {
+    color: #e74c3c;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { text-shadow: 0 0 5px rgba(231, 76, 60, 0.5); }
+    50% { text-shadow: 0 0 15px rgba(231, 76, 60, 0.8); }
+    100% { text-shadow: 0 0 5px rgba(231, 76, 60, 0.5); }
+}
+/* --- Momentum Title Glow Effect --- */
+
+/* Base style for Momentum title (matches other h3s) */
+.momentum-tracker h3 {
+    color: var(--color-accent);
+    transition: all 0.4s ease-out; /* Smooth transition for color and shadow */
+}
+
+/* Level 1 & 2: A subtle, soft glow */
+.momentum-tracker.momentum-level-1 h3 {
+    color: #ffd700; /* Brighter gold color */
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+
+/* Level 3 & 4: A brighter, more defined glow */
+.momentum-tracker.momentum-level-2 h3 {
+    color: #ffeca0; /* Even brighter yellow */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+/* Level 5: A strong, intense light */
+.momentum-tracker.momentum-level-3 h3 {
+    color: #fff4d1; /* Almost white-yellow */
+    text-shadow: 0 0 16px rgba(255, 215, 0, 0.9);
+}
+
+/* Level 6 (Max): A critical, pulsing light effect */
+.momentum-tracker.momentum-level-4 h3 {
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 1);
+    animation: momentum-glow 1.5s infinite ease-in-out;
+}
+
+/* Keyframe animation for the max-level pulse */
+@keyframes momentum-glow {
+    0% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 10px rgba(255, 215, 0, 1);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1);
+    }
+}

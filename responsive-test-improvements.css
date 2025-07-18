@@ -1,0 +1,361 @@
+/**
+ * Wheel of Fate Character Sheet - Responsive Design Improvements
+ * This file contains additional responsive design enhancements
+ * to ensure optimal display across all device sizes
+ */
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    /* Reduce overall padding to maximize space */
+    .character-sheet {
+        padding: 10px;
+        margin: 5px;
+    }
+    
+    /* Optimize header for very small screens */
+    header h1 {
+        font-size: 2em;
+    }
+    
+    /* Make trait items stack vertically on very small screens */
+    .trait-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+    }
+    
+    .trait-item .trait-name {
+        margin-bottom: 5px;
+    }
+    
+    .trait-item .value-statement {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .trait-item .dice-rating {
+        align-self: flex-end;
+    }
+    
+    /* Optimize roles list for very small screens */
+    .roles-list {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .role-item {
+        width: 100%;
+        flex: none;
+    }
+    
+    /* Ensure touch targets are large enough */
+    .circle {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .dice-rating {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 5px;
+    }
+    
+    .resolve-btn {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Optimize talent slots for small screens */
+    .talent-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .talent-name, .talent-tag {
+        width: 100%;
+    }
+}
+
+/* Small devices (landscape phones, 576px to 767.98px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    /* Adjust padding for small devices */
+    .character-sheet {
+        padding: 15px;
+    }
+    
+    /* Optimize roles list for small screens */
+    .role-item {
+        flex: 1 0 calc(33.333% - 10px);
+    }
+    
+    /* Ensure proper spacing in trait items */
+    .trait-item {
+        flex-wrap: wrap;
+    }
+    
+    .trait-item .value-statement {
+        order: 3;
+        width: 100%;
+        margin: 5px 0 0 0;
+    }
+}
+
+/* Medium devices (tablets, 768px to 991.98px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Optimize roles list for medium screens */
+    .role-item {
+        flex: 1 0 calc(33.333% - 10px);
+    }
+    
+    /* Adjust talent slots for medium screens */
+    .talents-section .talent-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+}
+
+/* Large devices (desktops, 992px to 1199.98px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Optimize roles list for large screens */
+    .role-item {
+        flex: 1 0 calc(20% - 10px);
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    /* Set maximum width for very large screens */
+    .character-sheet {
+        max-width: 1400px;
+    }
+}
+
+/* Landscape orientation specific adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    /* Optimize for landscape phone orientation */
+    .character-sheet {
+        padding: 10px;
+    }
+    
+    header {
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .main-content {
+        gap: 10px;
+    }
+    
+    .trait-box {
+        padding: 10px;
+    }
+    
+    .trait-box h2 {
+        font-size: 1.3em;
+        margin-bottom: 5px;
+    }
+    
+    /* Make scrollable sections for landscape orientation */
+    .trait-list, 
+    .distinction-list {
+        max-height: 150px;
+        overflow-y: auto;
+        padding-right: 5px;
+    }
+    
+    /* Add subtle scrollbar styling */
+    .trait-list::-webkit-scrollbar,
+    .distinction-list::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    .trait-list::-webkit-scrollbar-track,
+    .distinction-list::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    
+    .trait-list::-webkit-scrollbar-thumb,
+    .distinction-list::-webkit-scrollbar-thumb {
+        background: var(--color-accent-secondary);
+        border-radius: 5px;
+    }
+}
+
+/* Print-specific improvements */
+@media print {
+    /* Ensure page breaks occur at appropriate places */
+    .distinctions-section,
+    .values-section,
+    .approaches-section,
+    .trackers-section {
+        page-break-inside: avoid;
+    }
+    
+    .roles-section {
+        page-break-before: auto;
+        page-break-after: auto;
+        page-break-inside: avoid;
+    }
+    
+    .talents-section {
+        page-break-before: always;
+    }
+    
+    .notes-section {
+        page-break-before: auto;
+    }
+    
+    /* Ensure proper margins for printing */
+    @page {
+        margin: 0.5in;
+    }
+    
+    /* Optimize font sizes for print */
+    body {
+        font-size: 12pt;
+    }
+    
+    h1 {
+        font-size: 24pt;
+    }
+    
+    h2 {
+        font-size: 18pt;
+    }
+    
+    h3 {
+        font-size: 14pt;
+    }
+}
+
+/* High contrast mode improvements */
+@media (prefers-contrast: high) {
+    :root {
+        --color-text: #ffffff;
+        --color-accent-primary: #ffcc00;
+        --color-accent-secondary: #ffaa00;
+        --color-border: #ffcc00;
+    }
+    
+    .trait-box {
+        border: 3px solid var(--color-border);
+    }
+    
+    .circle {
+        border: 2px solid var(--color-border);
+    }
+    
+    .circle.filled {
+        background-color: var(--color-accent-primary);
+        border-color: #ffffff;
+    }
+    
+    input, select, textarea {
+        border: 2px solid var(--color-border);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+    
+    .trait-box:hover {
+        transform: none;
+    }
+    
+    .circle:hover {
+        transform: none;
+    }
+}
+
+/* Dark mode preferences (already dark, but ensure compatibility) */
+@media (prefers-color-scheme: dark) {
+    /* Already using dark theme, no changes needed */
+}
+
+/* Light mode preferences (for users who prefer light mode) */
+@media (prefers-color-scheme: light) {
+    /* Add a toggle option for users who want light mode */
+    body.light-mode {
+        background-color: #f5f5f5;
+        color: #333333;
+    }
+    
+    body.light-mode .character-sheet {
+        background-color: #ffffff;
+        border-color: #8c7853;
+    }
+    
+    body.light-mode .trait-box {
+        background-color: #f9f9f9;
+        border-color: #8c7853;
+    }
+    
+    body.light-mode .trait-box h2 {
+        color: #8c7853;
+    }
+}
+
+/* Accessibility improvements for screen readers */
+@media speech {
+    .character-sheet {
+        border: none;
+        background: none;
+    }
+    
+    .trait-box {
+        border: none;
+        background: none;
+        margin-bottom: 20px;
+    }
+    
+    .trait-box h2 {
+        border-bottom: 1px solid #000;
+    }
+    
+    /* Hide purely decorative elements from screen readers */
+    .character-sheet-corner,
+    .header-ornament-left,
+    .header-ornament-right {
+        display: none;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch target sizes */
+    .dice-rating,
+    .circle,
+    .resolve-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    /* Add more spacing between interactive elements */
+    .trait-item,
+    .distinction-item,
+    .approach-item,
+    .role-item {
+        padding: 10px 0;
+    }
+    
+    /* Improve focus states for touch */
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus {
+        outline: 3px solid var(--color-accent-primary);
+        outline-offset: 3px;
+    }
+}
